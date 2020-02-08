@@ -1,0 +1,40 @@
+create database test;
+drop database test;
+use test;
+
+create table demo (
+	id int,
+    ename varchar(10),
+    team varchar(10),
+    primary key(id)
+);
+
+truncate table demo;
+
+insert into demo values(17,'Ogier','Toyota');
+insert into demo values(8,'Tanak','Hyundai');
+insert into demo values(11,'Thierry','Hyundai');
+insert into demo values(69,'Kalle','Toyota');
+insert into demo values(4,'Lappi','Ford');
+insert into demo values(33,'Evans','Toyota');
+insert into demo values(9,'Loeb','Hyundai');
+
+SET SQL_SAFE_UPDATES = 0;
+
+create table demo1 (
+	id int,
+    points int,
+    primary key(id),
+    foreign key(id) references demo(id)
+);
+
+insert into demo1 values(17,22);
+insert into demo1 values(8,0);
+insert into demo1 values(11,30);
+insert into demo1 values(69,10);
+insert into demo1 values(4,13);
+insert into demo1 values(33,17);
+insert into demo1 values(9,8);
+
+select * from demo join demo1
+on demo.id=demo1.id;
